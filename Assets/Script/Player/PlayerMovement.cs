@@ -79,11 +79,11 @@ public class PlayerMovement : MonoBehaviour
         // Calculate the movement direction and apply the speed
         Vector3 movement = new Vector3(horizontalInput, 0, 0) * _moveSpeed * Time.fixedDeltaTime;
 
+        // Limit the maximum horizontal speed
+        movement.x = Mathf.Clamp(movement.x, -_maxHorizontalSpeed, _maxHorizontalSpeed);
+
         // Update position
         Vector3 newPosition = transform.position + movement;
-
-        // Limit the maximum horizontal speed
-        newPosition.x = Mathf.Clamp(newPosition.x, -_maxHorizontalSpeed, _maxHorizontalSpeed);
 
         transform.position = newPosition;
 

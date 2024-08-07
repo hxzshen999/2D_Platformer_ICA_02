@@ -5,8 +5,23 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private Slider _musicSlider, _sfxSlider; 
-    
+    [SerializeField] private Slider _musicSlider, _sfxSlider;
+    [SerializeField] GameObject _audioPanel;
+
+    private void Start()
+    {
+        _audioPanel.SetActive(false);
+    }
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                _audioPanel.SetActive(!_audioPanel.activeSelf);
+            }
+        }
+    }
     public void MusicToggle()
     {
         AudioManager.Instance.EnableMusic();
